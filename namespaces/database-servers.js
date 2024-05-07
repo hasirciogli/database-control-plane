@@ -3,6 +3,7 @@ const database = require("./../lib/Database.js");
 const { randomUUID } = require("crypto");
 const { message } = require("statuses");
 var mysql = require('mysql2');
+const { listAccounts } = require("../utils/database.js");
 
 const router = express.Router();
 
@@ -81,6 +82,28 @@ router.delete("/:serverId", (req, res) => {
     })
 })
 
+router.put("/:serverId", (req, res) => {
+    database.data.servers = database.data.servers.map((server) => {
+        if (server.id == req.params.serverId) {
+            return {
+                id: server.id,
+                ...req.body.data
+            };
+        } else return server
+    })
+
+    res.json({
+        status: true
+    })
+})
+
+
+
+
+
+
+
+// Accounts state
 router.get("/:serverId/accounts", async (req, res) => {
     var server = database.data.servers.filter((server) => {
         if (server.id == req.params.serverId) {
@@ -139,6 +162,47 @@ router.get("/:serverId/accounts", async (req, res) => {
     return res.json({
         status: true,
         accounts: isConnected,
+    })
+})
+
+router.post("/:serverId/accounts", async (req, res) => {
+    var server = database.data.servers.filter((server) => {
+        if (server.id == req.params.serverId) {
+            return server;
+        }
+    })
+
+    if (server.length > 0)
+        return res.json({
+            status: false,
+            message: "Account allready exits"
+        })
+
+    server = server.at(0)
+
+
+    var accounts = await listAccounts({
+        host: server.endpoint,
+        port: server.port,
+        user: server.user,
+        pass: server.pass
+    });
+
+    if (accounts) {
+        var exits = accounts.filter((acc) => {
+            if (acc.user == req.body.user && acc.host == req.body.host)
+                return true;
+        })
+        if (exits.length > 0)
+            return res.json({
+                status: false,
+                message: "Account allready exits."
+            })
+    }
+
+    return res.json({
+        status: false,
+        message: "Invalid error."
     })
 })
 

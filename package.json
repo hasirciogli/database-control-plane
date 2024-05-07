@@ -78,5 +78,8 @@
     "mysql-admin"
   ],
   "author": "hasirciogli",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
 }

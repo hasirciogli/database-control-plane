@@ -1,49 +1,25 @@
+require('./utils/log')
+var crypto = require('crypto');
 const express = require('express')
 const serversRouter = require("./namespaces/database-servers")
-var crypto = require('crypto');
+
+const { generateLocalHash, checkLocalHash, checkHashFromHeaders } = require('./utils/hash');
 
 const app = express()
 const port = 3000
 
-const authKeys = {
-    authKey: "admin1234",
-    salt: "god-damn-1234",
-    hashes: [
-        "moon",
-        "sun",
-        "shit"
-    ]
-}
-
 app.use(express.json());
 
 app.use((req, res, next) => {
-    var hash = crypto.createHash('sha256');
 
-
-    var requestedHash = req.headers["x-auth-key"] ?? null;
-    if (!requestedHash) {
+    if (!checkHashFromHeaders(req))
         return res.status(401).json({
             status: false,
             message: "Authentication required."
         })
-    }
-
-    var hashBase = authKeys.authKey + authKeys.hashes.join("");
-    hashBase = hash.update(hashBase);
-    hashBase = hash.digest(hashBase).toString("base64");
-    // Burada hash calculate edildi
-
-    if (hashBase !== requestedHash) {
-        return res.status(401).json({
-            status: false,
-            message: "Authentication required."
-        })
-    }
 
     next();
 })
-
 
 app.get("/health-check", (req, res) => {
     res.json({
@@ -56,6 +32,27 @@ app.get("/health-check", (req, res) => {
 app.use("/database-servers", serversRouter)
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+
+
+
+
+
+
+// Mainside an app (Load save database and check hash, ... ETC.)
+async function main() {
+    await loadState();
+
+    app.listen(port, () => {
+        clog(`App started on ${port}`)
+    })
+}
+
+async function loadState() {
+    clog("Load starting");
+    if (!checkLocalHash())
+        generateLocalHash()
+    clog("Load ended")
+}
+
+// Ana fonksiyonu çağırın
+main();
