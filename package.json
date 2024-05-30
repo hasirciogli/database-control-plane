@@ -45,7 +45,7 @@
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
     "ms": "^2.0.0",
-    "mysql2": "^3.9.7",
+    "mysql2": "^3.9.8",
     "negotiator": "^0.6.3",
     "object-inspect": "^1.13.1",
     "on-finished": "^2.4.1",
