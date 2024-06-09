@@ -1,0 +1,23 @@
+name: Docker Login and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Login to Docker Hub
+      run: docker login -u hasirciogli -p ${{ secrets.DOCKER_TOKEN }}
+    
+    - name: Build Docker image
+      run: docker build -t hasirciogli/database-control-plane:latest .
+    
+    - name: Push Docker image
+      run: docker push hasirciogli/database-control-plane:latest
