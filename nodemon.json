@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "./src/http-server/public/**"],
+  "ext": "ts, js, json, html",
+  "exec": "rm -rf ./dist && npx tsc && chmod +rwx dist/cli/cli.js && cp -r ./src/http-server/public ./dist/http-server/public && node ./dist/cli/cli.js start-http-server"
+}

@@ -1,1 +1,19 @@
-{"authKeys":{"authKey":"0098912f-6ad1-43a0-987c-1f95bd2bb0f4","salt":"https://vicious-measure.us/","hashes":["keltonwillms-cartwright","effiefeeney","melodylockman","clydelakin","adonisharber","miguelgreenfelder","amayamayer","mckayladietrich"]}}
+{
+  "authKeys": {
+    "authKey": "750c66e0-d684-4588-888a-9ecc88b3c33f",
+    "salt": "https://vain-harbor.com/",
+    "hashes": [
+      "madelinegottlieb",
+      "judybeer",
+      "wavamante",
+      "michaelcarroll",
+      "mathiaschamplin"
+    ]
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "dombra"
+    }
+  ]
+}

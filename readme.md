@@ -11,13 +11,13 @@ Mysql control plane ile mysql sunucularınızın kontrolünü yaparsınız. UI v
 
 ## Kurulum NodeJS
 
-> **Nodejs kütüphane kurulumu**
+> **Install NodeJS Dependencies**
 
 `npm i`
 
->  **Projenin ayağa kalkması**
+>  **Run In Production**
 
-`node index.js`
+`npx tsc && node dist/cli/cli.js start-http-server`
 
 
 ## Kurulum Docker

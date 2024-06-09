@@ -1,0 +1,33 @@
+{
+  "authKeys": {
+    "authKey": "0098912f-6ad1-43a0-987c-1f95bd2bb0f4",
+    "salt": "https://vicious-measure.us/",
+    "hashes": [
+      "keltonwillms-cartwright",
+      "effiefeeney",
+      "melodylockman",
+      "clydelakin",
+      "adonisharber",
+      "miguelgreenfelder",
+      "amayamayer",
+      "mckayladietrich"
+    ]
+  },
+  "servers": [
+    {
+      "id": "ab1046f6-fc07-402b-9d20-1eb258f19339",
+      "name": "Mustafa Hasırcıoğlu",
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "user": "root",
+      "pass": "1234"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin"
+    }
+  ]
+}

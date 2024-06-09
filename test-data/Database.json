@@ -1,0 +1,31 @@
+{
+  "authKeys": {
+    "authKey": "ad7fc6d5-b842-425f-9cf0-26bc05ee4592",
+    "salt": "https://conscious-pillar.org",
+    "hashes": [
+      "edward",
+      "khalidkutch",
+      "alvinamurazik",
+      "solonquigley",
+      "helenbradtke",
+      "vitoschowalter"
+    ]
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "dombra"
+    }
+  ],
+  "servers": [
+    {
+      "id": "ef5dac35-517b-494e-a065-c2876014fb8a",
+      "name": "Mustafa Hasircioglu",
+      "type": "mysql",
+      "host": "192.168.1.33",
+      "port": 3306,
+      "user": "root",
+      "pass": "1234"
+    }
+  ]
+}
