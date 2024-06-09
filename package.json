@@ -1,5 +1,5 @@
 {
-  "name": "mysql-control-plane",
+  "name": "database-control-plane",
   "version": "1.0.0",
   "type": "commonjs",
   "description": "You can control mysql servers (in docker) with this control plane",
