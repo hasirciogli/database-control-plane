@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Baser Check
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
@@ -19,6 +19,6 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
-    - name: sex babba
-      run: echo "hrllo world"
+      run: npm i
+    - name: Build base
+      run: npm build
